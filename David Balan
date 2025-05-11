@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Balan Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f9f6;
+      --text: #2c3e50;
+      --accent: #3b4c63;
+    }
+
+    [data-theme="dark"] {
+      --bg: #111111;
+      --text: #ffffff;
+      --accent: #eeeeee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #2c3e50;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar {
+      position: relative;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--bg);
+      box-shadow: none;
+      z-index: 10;
+    }
+
+    .navbar a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      transform: scale(1.1);
+      color: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 300px; height: auto; aspect-ratio: 3 / 1;
+      background-image: url('https://i.imgur.com/cPcukrZ.gif');
+      background-size: cover;
+      background-position: top;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      color: var(--text);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-text {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .scroll-indicator {
+      margin: 2rem auto;
+      text-align: center;
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: bounce 1.2s infinite 1s forwards;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .intro {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: none;
+      border: 2px solid var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+  
+  .carousel-btn.left {
+    left: 10px;
+  }
+  .carousel-btn.right {
+    right: 10px;
+  }
+  .hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <nav class="navbar">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+  <div class="hero-background" style="background-image: url('https://i.imgur.com/4eTUM3A.gif');"></div>
+  <div class="hero-text">Designer</div>
+  <div class="hero-text">Strategist</div>
+</section>
+
+  <div class="scroll-indicator">↓</div>
+
+  <div class="intro" style="margin: 0.5rem auto; padding: 0 1rem;">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec varius velit. Mauris feugiat purus at nunc imperdiet, et egestas justo tincidunt.</p>
+  </div>
+
+  <section class="gallery" style="overflow: hidden; position: relative;">
+    
+    
+    <div class="carousel-track" style="display: flex; gap: 1.5rem; padding: 2rem; transition: transform 0.5s ease;">
+      <img src="https://i.imgur.com/jqAZUMu.png" alt="Project 1" style="min-width: 300px; height: auto; border-radius: 20px;">
+      <img src="https://i.imgur.com/Fw2J456.png" alt="Project 2" style="min-width: 300px; height: auto; border-radius: 20px;">
+      <img src="https://i.imgur.com/DRWnf2r.png" alt="Project 3" style="min-width: 300px; height: auto; border-radius: 20px;">
+      <img src="https://i.imgur.com/Pro1YZA.png" alt="Project 4" style="min-width: 300px; height: auto; border-radius: 20px;">
+      <img src="https://i.imgur.com/Yd8VxAB.jpeg" alt="Project 5" style="min-width: 300px; height: auto; border-radius: 20px;">
+      <img src="https://i.imgur.com/KnaEHyj.jpeg" alt="Project 6" style="min-width: 300px; height: auto; border-radius: 20px;">
+    </div>
+  </section>
+  <style>
+    .gallery:hover .carousel-track {
+      animation-play-state: paused;
+    }
+    @keyframes scrollCarousel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carousel-track {
+      animation: scrollCarousel 30s linear infinite;
+    }
+  </style>
+
+  <footer class="footer">
+    © 2025 David Balan. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
+  </script>
+
+</body>
+</html>
